@@ -1,13 +1,14 @@
 <?php
-// Configuración de la conexión a la base de datos usando variables de entorno
-$host = getenv('DB_HOST') ?: 'localhost'; // Host de la base de datos
-$dbname = getenv('DB_NAME') ?: 'vive_talara'; // Nombre de la base de datos
-$username = getenv('DB_USER') ?: 'root'; // Usuario de la base de datos
-$password = getenv('DB_PASS') ?: ''; // Contraseña de la base de datos
+// Configuración de la conexión a la base de datos usando variables de entorno de Railway
+$host = getenv('MYSQLHOST') ?: 'localhost'; // Host de la base de datos
+$dbname = getenv('MYSQLDATABASE') ?: 'vive_talara'; // Nombre de la base de datos
+$username = getenv('MYSQLUSER') ?: 'root'; // Usuario de la base de datos
+$password = getenv('MYSQLPASSWORD') ?: ''; // Contraseña de la base de datos
+$port = getenv('MYSQLPORT') ?: '3306'; // Puerto de la base de datos (por defecto 3306 para MySQL)
 
 try {
-    // Crear conexión PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    // Crear conexión PDO con el puerto incluido
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password);
     
     // Configurar PDO para manejar errores y usar modo de excepción
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
