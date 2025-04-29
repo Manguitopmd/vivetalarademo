@@ -1,0 +1,100 @@
+/* Asegurar fondo negro en toda la página */
+html, body, .main-container, .main-content {
+    background-color: #000 !important; /* Fondo negro total */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para la sección de turismo */
+.turismo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas fijas */
+    gap: 8px; /* Espaciado entre distritos */
+    width: 100%; /* Ocupa todo el ancho */
+    padding: 0; /* Sin padding para maximizar espacio */
+    box-sizing: border-box;
+    height: calc(100vh - 60px); /* Cubre la pantalla menos el top-bar */
+    background-color: #000; /* Fondo negro */
+    align-content: start; /* Evita estiramiento vertical */
+}
+
+/* Orden explícito para los distritos */
+.district-1 { grid-column: 1; grid-row: 1; } /* La Brea - Izquierda, arriba */
+.district-2 { grid-column: 1; grid-row: 2; } /* Pariñas - Izquierda, medio */
+.district-3 { grid-column: 1; grid-row: 3; } /* Lobitos - Izquierda, abajo */
+.district-4 { grid-column: 2; grid-row: 1; } /* El Alto - Derecha, arriba */
+.district-5 { grid-column: 2; grid-row: 2; } /* Los Órganos - Derecha, medio */
+.district-6 { grid-column: 2; grid-row: 3; } /* Máncora - Derecha, abajo */
+
+.district-section {
+    height: calc((100vh - 60px - 16px) / 3); /* Altura restando top-bar y gaps */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Evita desbordes */
+    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.1); /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+.district-section:hover {
+    transform: translateY(-3px); /* Elevación sutil */
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2); /* Sombra más intensa */
+}
+
+.district-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
+    transition: background-color 0.3s ease;
+    padding: 8px; /* Padding interno para que respire */
+}
+
+.district-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Overlay oscuro */
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.district-link:hover::before {
+    background: rgba(0, 0, 0, 0.2); /* Overlay más claro al hover */
+}
+
+.district-icon {
+    font-size: 1.5rem; /* Ícono para móviles */
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 6px; /* Espacio reducido */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* Sombra sutil */
+    transition: transform 0.3s ease;
+}
+
+.district-link:hover .district-icon {
+    transform: scale(1.1); /* Aumento del ícono al hover */
+}
+
+.district-link h2 {
+    font-family: 'Poppins', sans-serif; /* Tipografía moderna */
+    font-size: 1rem; /* Tamaño para móviles */
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* Sombra sutil */
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.district-link:hover h2 {
+    transform: scale(1.05); /* Aumento del texto al hover */
+}

@@ -1,0 +1,549 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Material Design typography */
+    background: #f5f7fa;
+    color: #202124;
+    line-height: 1.5;
+}
+
+/* Main Container with Glassmorphism */
+.emergencias-container {
+    padding: 16px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6200ea 0%, #03a9f4 100%); /* Material-inspired gradient */
+    position: relative;
+    overflow-x: hidden;
+}
+
+.emergencias-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Glassmorphism blur */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle Glassmorphism border */
+    z-index: 1;
+}
+
+.emergencias-container > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Search Bar (Material + Glassmorphism) */
+.search-bar {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Material elevation */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 8px;
+    width: 100%;
+}
+
+.search-bar input::placeholder {
+    color: #e0e0e0;
+}
+
+.search-bar input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Filter Button */
+.filter-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px); /* Material Design ripple-like effect */
+}
+
+/* Filter Modal */
+.filter-modal {
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 90%;
+}
+
+.modal-content h2 {
+    color: #202124;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.filtros-options label {
+    font-size: 0.875rem;
+    color: #202124;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.filtros-options input[type="radio"],
+.filtros-options input[type="checkbox"] {
+    accent-color: #6200ea; /* Material primary color */
+}
+
+#cerrar-modal-filtros {
+    background: transparent;
+    color: #202124;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+#aplicar-filtros {
+    background: #6200ea;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+#aplicar-filtros:hover {
+    background: #7c4dff;
+}
+
+/* Emergency Panel */
+.emergency-panel {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.panel-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.panel-subtitle {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 16px;
+}
+
+.panel-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.panel-btn {
+    background: #03a9f4;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.panel-btn:hover {
+    background: #0288d1;
+    transform: translateY(-2px);
+}
+
+/* Panic Button */
+.panic-button-container {
+    text-align: center;
+    margin: 24px 0;
+}
+
+.panic-btn {
+    background: #d32f2f;
+    color: #fff;
+    border-radius: 50px;
+    padding: 16px 32px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.panic-btn:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+}
+
+.panic-options {
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.panic-option {
+    background: #d32f2f;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: background 0.3s;
+}
+
+.panic-option:hover {
+    background: #b71c1c;
+}
+
+/* Sections (Material Cards + Glassmorphism) */
+.map-section,
+.guide-section,
+.alerts-section,
+.tips-section,
+.contacts-section,
+.personalization-section,
+.offline-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Material elevation */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 12px;
+}
+
+/* Map Section */
+.map-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    color: #202124;
+}
+
+.map-btn,
+.save-btn,
+.download-btn {
+    background: #6200ea;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.map-btn:hover,
+.save-btn:hover,
+.download-btn:hover {
+    background: #7c4dff;
+    transform: translateY(-2px);
+}
+
+.map-results p {
+    margin: 8px 0;
+    color: #202124;
+}
+
+/* Guide Section */
+.guide-select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    color: #202124;
+    width: 100%;
+}
+
+.guide-content {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    color: #202124;
+}
+
+/* Alerts Carousel */
+.alerts-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.alert-card {
+    flex: 0 0 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-right: 12px;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 50%;
+    padding: 8px;
+    transition: background 0.3s;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-prev {
+    left: 8px;
+}
+
+.carousel-next {
+    right: 8px;
+}
+
+/* Tips Carousel */
+.tips-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 8px;
+}
+
+.tip-card {
+    flex: 0 0 200px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tip-card i {
+    font-size: 1.75rem;
+    color: #6200ea;
+    margin-bottom: 12px;
+}
+
+.tip-action {
+    background: #03a9f4;
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.tip-action:hover {
+    background: #0288d1;
+}
+
+/* Contacts Section */
+.contacts-list {
+    display: grid;
+    gap: 12px;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-btn {
+    background: #6200ea;
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.contact-btn:hover {
+    background: #7c4dff;
+    transform: translateY(-2px);
+}
+
+/* Personalization Section */
+.contact-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    color: #202124;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.saved-contact {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    color: #202124;
+}
+
+/* Offline Section */
+.offline-section {
+    text-align: center;
+}
+
+/* Emergency Bar (Material Design) */
+.emergency-bar {
+    background: #d32f2f;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 12px;
+}
+
+.emergency-bar a {
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s;
+}
+
+.emergency-bar a:hover {
+    color: #ffeb3b;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .emergencias-container {
+        padding: 12px;
+    }
+
+    .panel-title {
+        font-size: 1.5rem;
+    }
+
+    .panel-btn {
+        padding: 10px;
+        font-size: 0.875rem;
+    }
+
+    .panic-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .tip-card {
+        flex: 0 0 180px;
+    }
+
+    .emergency-bar {
+        padding: 10px;
+    }
+
+    .emergency-bar a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-title {
+        font-size: 1.25rem;
+    }
+
+    .panel-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .panel-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .panic-btn {
+        padding: 10px 20px;
+        font-size: 0.875rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .contact-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .tip-card {
+        flex: 0 0 160px;
+    }
+
+    .emergency-bar a {
+        font-size: 0.6875rem;
+    }
+}

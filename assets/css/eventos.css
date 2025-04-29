@@ -1,0 +1,546 @@
+/* General container */
+.eventos-container {
+    background-color: #66584c; /* Fondo oscuro y elegante */
+    min-height: calc(100vh - 3.5rem);
+    padding: 2rem;
+    font-family: 'Inter', sans-serif; /* Fuente moderna */
+}
+
+/* Sticky header */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: #121212;
+    padding: 1rem 0;
+}
+
+/* Search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    background-color: #1e1e1e;
+    border: 1px solid #4b5563;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.search-bar input:focus {
+    border-color: #00ddeb;
+    box-shadow: 0 0 0 3px rgba(0, 221, 235, 0.2);
+}
+
+/* Filter buttons */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    background-color: #1e1e1e;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    background-color: #00ddeb;
+    transform: translateY(-2px);
+}
+
+.filter-btn i {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Filter modal */
+.filter-modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.filter-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.filter-modal .modal-content {
+    background-color: #1e1e1e;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(20px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.filter-modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.filter-modal h2 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.distrito-options,
+.fecha-options,
+.categoria-options {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    max-height: 70vh;
+}
+
+.distrito-options label,
+.fecha-options label,
+.categoria-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #e5e7eb;
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+    transition: background-color 0.2s ease;
+}
+
+.distrito-options label:hover,
+.fecha-options label:hover,
+.categoria-options label:hover {
+    background-color: #2d2d2d;
+    border-radius: 0.375rem;
+}
+
+.distrito-options input[type="radio"],
+.fecha-options input[type="radio"],
+.categoria-options input[type="checkbox"] {
+    accent-color: #00ddeb;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+#aplicar-distrito,
+#aplicar-fecha,
+#aplicar-categoria {
+    background-color: #00ddeb;
+    color: #121212;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+#aplicar-distrito:hover,
+#aplicar-fecha:hover,
+#aplicar-categoria:hover {
+    background-color: #00c4d4;
+    transform: translateY(-2px);
+}
+
+/* Events grid */
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding-top: 1rem;
+}
+
+/* Event card */
+.evento-card {
+    background-color: #1e1e1e;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.evento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.evento-card.featured {
+    border: 2px solid #facc15;
+}
+
+.evento-card.featured .destacado {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background-color: #facc15;
+    color: #121212;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    z-index: 10;
+}
+
+/* Category indicators */
+.evento-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+}
+
+.evento-card.cultural::before {
+    background-color: #f59e0b; /* Amber */
+}
+
+.evento-card.deportivo::before {
+    background-color: #00ddeb; /* Cyan */
+}
+
+.evento-card.gastronomico::before {
+    background-color: #ef4444; /* Red */
+}
+
+.evento-card.musical::before {
+    background-color: #8b5cf6; /* Purple */
+}
+
+.evento-card.festival::before {
+    background-color: #ec4899; /* Pink */
+}
+
+.evento-card.comercial::before {
+    background-color: #10b981; /* Green */
+}
+
+.evento-card.familiar::before {
+    background-color: #f97316; /* Orange */
+}
+
+.evento-card.celebracion::before {
+    background-color: #facc15; /* Yellow */
+}
+
+.evento-card.educativo::before {
+    background-color: #3b82f6; /* Blue */
+}
+
+.evento-card.hidden {
+    display: none;
+}
+
+/* Card content */
+.evento-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.evento-card .fecha {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #facc15;
+    margin-bottom: 0.75rem;
+}
+
+.evento-card .descripcion-breve {
+    font-size: 0.875rem;
+    color: #d1d5db;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.evento-card .organizador {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #d1d5db;
+    margin-top: 0.5rem;
+}
+
+/* District ribbon */
+.ribbon-distrito {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-bottom-right-radius: 0.375rem;
+    z-index: 10;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* District colors by ID */
+.ribbon-distrito-1 { background-color: #00ddeb; } /* Pariñas - Cyan */
+.ribbon-distrito-2 { background-color: #10b981; } /* Máncora - Green */
+.ribbon-distrito-3 { background-color: #3b82f6; } /* Lobitos - Blue */
+.ribbon-distrito-4 { background-color: #ef4444; } /* El Alto - Red */
+.ribbon-distrito-5 { background-color: #8b5cf6; } /* Los Órganos - Purple */
+.ribbon-distrito-6 { background-color: #f59e0b; } /* La Brea - Amber */
+
+/* Event modal */
+.evento-modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.evento-modal.show {
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(4px);
+}
+
+.evento-modal .modal-content {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    background-color: #1e1e1e; /* Fallback background */
+}
+
+.evento-modal.show .modal-content {
+    transform: translateY(0);
+}
+
+/* Category-specific modal backgrounds */
+.evento-modal.cultural .modal-content {
+    background-color: #7c4e05; /* Darker amber */
+}
+
+.evento-modal.deportivo .modal-content {
+    background-color: #006e7d; /* Darker cyan */
+}
+
+.evento-modal.gastronomico .modal-content {
+    background-color: #7f1d1d; /* Darker red */
+}
+
+.evento-modal.musical .modal-content {
+    background-color: #4c2c7b; /* Darker purple */
+}
+
+.evento-modal.festival .modal-content {
+    background-color: #831843; /* Darker pink */
+}
+
+.evento-modal.comercial .modal-content {
+    background-color: #065f46; /* Darker green */
+}
+
+.evento-modal.familiar .modal-content {
+    background-color: #7c3a0b; /* Darker orange */
+}
+
+.evento-modal.celebracion .modal-content {
+    background-color: #7c6a0a; /* Darker yellow */
+}
+
+.evento-modal.educativo .modal-content {
+    background-color: #1e3a8a; /* Darker blue */
+}
+
+.modal-content img,
+.modal-content iframe {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content iframe {
+    aspect-ratio: 16/9;
+}
+
+.modal-content h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: #e5e7eb; /* Lighter gray for better contrast */
+    margin-bottom: 1.5rem;
+}
+
+.modal-content .fecha {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #facc15;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-content .no-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d2d2d;
+    color: #9ca3af;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.modal-content .botones {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.modal-content .botones a {
+    padding: 0.75rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content .botones a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content .botones a i {
+    font-size: 1.5rem;
+}
+
+.modal-content .botones .btn-whatsapp {
+    background-color: #25d366;
+}
+
+.modal-content .botones .btn-maps {
+    background-color: #00ddeb;
+}
+
+.modal-content .botones .btn-tickets {
+    background-color: #facc15;
+}
+
+.modal-content .botones .btn-web {
+    background-color: #f97316;
+}
+
+#cerrar-modal,
+#cerrar-modal-distrito,
+#cerrar-modal-fecha,
+#cerrar-modal-categoria {
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+#cerrar-modal:hover,
+#cerrar-modal-distrito:hover,
+#cerrar-modal-fecha:hover,
+#cerrar-modal-categoria:hover {
+    color: #00ddeb;
+}
+
+/* Responsiveness */
+@media (max-width: 640px) {
+    .eventos-container {
+        padding: 1rem;
+    }
+    .eventos-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+    .filter-modal .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+    .ribbon-distrito {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        max-width: 120px;
+    }
+    .evento-card.featured .destacado {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+/* Hover effects */
+@media (hover: hover) {
+    .evento-card:hover {
+        transform: translateY(-6px);
+    }
+    .filter-btn:hover {
+        background-color: #00ddeb;
+    }
+}
